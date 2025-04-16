@@ -26,11 +26,15 @@ Integration Steps
 ```bash
 docker run -p 5001:5001 -e DOCLING_SERVE_ENABLE_UI=true quay.io/docling-project/docling-serve
 ```
+This command starts the Docling container and maps port 5001 from the container to port 5001 on your local machine.
 
-*With GPU support:
+* With GPU support (CUDA 12.4+):
 ```bash
-docker run --gpus all -p 5001:5001 -e DOCLING_SERVE_ENABLE_UI=true quay.io/docling-project/docling-serve
+docker run --gpus all -p 5001:5001 -e DOCLING_SERVE_ENABLE_UI=true quay.io/docling-project/docling-serve-cu124
 ```
+If no CUDA 12.4+ GPU available, just add ```--gpus all``` to expose your GPU to docker container (Docling will use it, if available).
+
+If port 5001 is busy - change 5001 to some other port, example: ```-p 5555:5001```.
 
 ### Step 2: Configure Open WebUI to use Docling
 
@@ -49,13 +53,7 @@ To verify that Docling is working correctly in a Docker environment, you can fol
 
 ### 1. Start the Docling Docker Container
 
-First, ensure that the Docling Docker container is running. You can start it using the following command:
-
-```bash
-docker run -p 5001:5001 -e DOCLING_SERVE_ENABLE_UI=true quay.io/docling-project/docling-serve
-```
-
-This command starts the Docling container and maps port 5001 from the container to port 5001 on your local machine.
+First, ensure that the Docling Docker container is running. You can start it using the earlier mentioned running command.
 
 ### 2. Verify the Server is Running
 
