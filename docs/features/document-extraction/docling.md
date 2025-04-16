@@ -49,8 +49,13 @@ First, ensure that the Docling Docker container is running. You can start it usi
 ```bash
 docker run -p 5001:5001 -e DOCLING_SERVE_ENABLE_UI=true quay.io/docling-project/docling-serve
 ```
-
+For GPU support, add --gpus all like so:
+```bash
+docker run --gpus all -p 5001:5001 -e DOCLING_SERVE_ENABLE_UI=true quay.io/docling-project/docling-serve
+```
 This command starts the Docling container and maps port 5001 from the container to port 5001 on your local machine.
+
+If port 5001 is not available, change it for example to ```-p 5555:5001```.
 
 ### 2. Verify the Server is Running
 
